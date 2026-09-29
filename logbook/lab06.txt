@@ -1,0 +1,10 @@
+LAB 6 LOGBOOK - Aryan R Nawkar
+SETUP: my working directory is ~/nst/labs/lab06-os-and-fliesystem
+T1 prediction: I think ls / will show about ??? items
+T1: /bin holds Programs
+T1: /dev holds Devices tha predent to be a fiile
+T1: / means root , ~ means home dict , . means current dict
+T1: the OS groups files by filesystem
+T2 prediction: ./deploy will not run  because x is missing
+T2: -rw-r--r-- written in numbers is 644
+T4 prediction: a file called ls in ~/nst/bin will be called first when we use ls in terminal
