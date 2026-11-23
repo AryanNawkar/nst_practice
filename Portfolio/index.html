@@ -1,338 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aryan Nawkar | B.Tech CS &amp; AI Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aryan Nawkar — Portfolio</title>
+<style>
+:root{
+  --bg:#050706;--panel:#0c110e;--panel2:#111914;--line:#26372c;
+  --green:#39ff14;--green-soft:#b5ff9f;--text:#e8f2e9;--muted:#9aaa9d;
+  --amber:#d9ff6b;--danger:#ff6b6b;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(rgba(57,255,20,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(57,255,20,.08) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
+a{color:var(--green)}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.shell{width:min(1100px,calc(100% - 32px));margin:auto;padding:34px 0 70px;position:relative}
+.topline{display:flex;justify-content:space-between;gap:16px;align-items:center;color:var(--muted);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase}
+.brand{color:var(--green);font-weight:800}
+.hero{padding:68px 0 38px;max-width:850px}
+.kicker{color:var(--green);font-size:.78rem;letter-spacing:.18em;font-weight:800;text-transform:uppercase}
+h1{font-size:clamp(2.5rem,7vw,5.2rem);line-height:.98;letter-spacing:-.06em;margin:16px 0 20px}
+h1 span{color:var(--green);text-shadow:0 0 28px #39ff1438}
+.lead{font-size:1.12rem;color:#bdcabe;max-width:700px}
+.mission{border:1px solid #315b32;background:linear-gradient(110deg,#102014,#0b100d);padding:18px 20px;border-left:4px solid var(--green);border-radius:10px;margin:28px 0}
+.mission strong{color:var(--green);letter-spacing:.08em}
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0}
+.field{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:12px}
+.field label,.small-label{display:block;color:var(--green-soft);font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+input[type=text],textarea{width:100%;background:#070b08;color:var(--text);border:1px solid #344638;border-radius:6px;padding:10px;outline:none}
+input:focus,textarea:focus{border-color:var(--green);box-shadow:0 0 0 2px #39ff1420}
+.route{color:var(--muted);font-size:.9rem;margin:18px 0 34px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 34px}
+nav a{font-size:.78rem;text-decoration:none;border:1px solid var(--line);padding:7px 11px;border-radius:99px;color:var(--green-soft)}
+nav a:hover{background:#142316;border-color:var(--green)}
+section{scroll-margin-top:20px;margin:34px 0 52px}
+.section-head{display:flex;gap:15px;align-items:flex-start;margin-bottom:22px}
+.num{font-size:.85rem;color:var(--green);font-weight:900;border:1px solid #397d32;border-radius:7px;padding:5px 9px;white-space:nowrap}
+h2{font-size:clamp(1.6rem,4vw,2.3rem);line-height:1.1;letter-spacing:-.035em;margin:0 0 8px}
+h3{font-size:1.15rem;margin:0 0 12px;color:var(--green-soft)}
+.sub{color:var(--muted);margin:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin:14px 0}
+.card-title{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.tag{font-size:.68rem;color:var(--green);border:1px solid #376c31;border-radius:5px;padding:3px 7px;letter-spacing:.08em;text-transform:uppercase}
+table{width:100%;border-collapse:collapse;margin:12px 0;background:#090e0b;border-radius:8px;overflow:hidden}
+th{background:#14251a;color:var(--green);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;text-align:left}
+th,td{padding:11px 12px;border:1px solid #26372c;vertical-align:top}
+td{color:#d8e4da}
+td input[type=text]{min-width:100px}
+td textarea{min-height:48px;resize:vertical}
+.prompt{border:1px dashed #4a873f;background:#0b160d;border-radius:9px;padding:16px;color:#d9f6d4}
+.prompt strong{color:var(--green)}
+.checkline{display:flex;align-items:flex-start;gap:10px;margin:10px 0;color:#dce8de}
+input[type=checkbox]{accent-color:var(--green);width:17px;height:17px;margin-top:4px;flex:0 0 auto}
+.choice-row{display:flex;gap:18px;flex-wrap:wrap}
+.choice-row label{display:flex;align-items:center;gap:7px}
+.note{color:var(--muted);font-size:.88rem}
+textarea{min-height:80px;resize:vertical}
+.grid-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.actions{position:sticky;bottom:14px;z-index:5;display:flex;justify-content:flex-end;gap:9px;margin-top:40px;pointer-events:none}
+.actions button{pointer-events:auto;border:1px solid #4d9e40;border-radius:8px;background:#102014;color:var(--green);font-weight:800;padding:10px 15px;box-shadow:0 6px 24px #0009}
+.actions button.primary{background:var(--green);color:#061006;border-color:var(--green)}
+.actions button:hover{filter:brightness(1.12)}
+footer{border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:.8rem;display:flex;justify-content:space-between;gap:12px}
+.progress{height:5px;background:#18221b;border-radius:99px;overflow:hidden;margin:14px 0 4px}
+.progress span{display:block;height:100%;width:0;background:var(--green);transition:width .2s}
+@media(max-width:700px){.shell{width:min(100% - 22px,1100px);padding-top:22px}.hero{padding-top:48px}.meta-grid,.grid-two{grid-template-columns:1fr}.topline{align-items:flex-start;flex-direction:column}table{display:block;overflow-x:auto;white-space:normal}th,td{min-width:150px}.section-head{gap:10px}.card{padding:14px}.actions{bottom:8px}}
+@media print{body{background:#fff;color:#111}.shell{width:100%;padding:0}.topline,.actions,nav,.progress{display:none!important}.hero{padding:20px 0}.mission,.card,.field,.prompt{background:#fff;color:#111;border:1px solid #999;break-inside:avoid}h1,h2,h3,.kicker,.brand,.num,.field label,.tag,th{color:#111;text-shadow:none}input,textarea{background:#fff;color:#111;border:1px solid #999}table,th,td{background:#fff;color:#111;border-color:#aaa}section{break-inside:avoid-page}.note,.sub,.lead,.route,footer{color:#333}}
+</style>
 </head>
 <body>
-
-  <!-- ========================================================= -->
-  <!-- HIDDEN CHECKBOX CONTROLLER (FOR PURE CSS PHOTO MODAL)     -->
-  <!-- ========================================================= -->
-  <!-- This hidden checkbox lets us open/close the full photo on click without any JavaScript! -->
-  <input type="checkbox" id="photo-zoom" class="photo-modal-toggle" aria-hidden="true" />
-
-  <!-- ========================================================= -->
-  <!-- NAVIGATION BAR (TOP-LEFT ORIENTED)                       -->
-  <!-- ========================================================= -->
-  <header class="site-header">
-    <nav class="nav-container">
-      <div class="nav-left">
-        <span class="logo-mark">&lt;/&gt;</span>
-        <ul class="nav-links">
-          <li><a href="#home" class="nav-link active">Home</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#achievements" class="nav-link">Achievements</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-      </div>
-      <div class="nav-right">
-        <a href="#contact" class="btn-nav">Let's Connect</a>
-      </div>
-    </nav>
+<div class="shell">
+  <div class="topline"><div class="brand">PORTFOLIO QUALITY LAB <span style="color:var(--muted)">/ FIRST-SEMESTER AI</span></div><div>Design · Test · Improve</div></div>
+  <header class="hero">
+    <div class="kicker">01 / Start with a human</div>
+    <h1>ARYAN <span>NAWKAR</span></h1>
+    <p class="lead">B.Tech student in Computer Science &amp; Artificial Intelligence. Exploring programming, machine learning, and the ideas that could shape the future of intelligent systems.</p>
+    <div class="mission"><strong>ABOUT ME</strong><br>I’m Aryan Nawkar, currently pursuing a B.Tech in Computer Science &amp; Artificial Intelligence. This portfolio is a work in progress — I’ll be adding my education details, skills, projects, and experience as I build and learn.</div>
+    <div class="meta-grid">
+      <div class="field"><label>Education</label><div style="font-size:1.05rem;font-weight:750">B.Tech · Computer Science &amp; AI</div><div class="note">Undergraduate student</div></div>
+      <div class="field"><label>Current focus</label><div style="font-size:1.05rem;font-weight:750;color:var(--green-soft)">Programming · AI · Machine Learning</div><div class="note">More details coming soon</div></div>
+    </div>
+    <p class="route"><strong style="color:var(--green)">PORTFOLIO STATUS</strong> · Personal portfolio / currently being built / more sections coming soon</p>
+    
   </header>
+  <nav aria-label="Lab sections">
+    <a href="#about">About</a><a href="#education">Education</a><a href="#coming-soon">More coming soon</a>
+  </nav>
 
-  <main>
-    <!-- ========================================================= -->
-    <!-- HERO / HOME SECTION                                       -->
-    <!-- Left: Round Image (Clickable to animate into full view)   -->
-    <!-- Right: Personal Description                               -->
-    <!-- ========================================================= -->
-    <section id="home" class="hero-section">
-      <div class="hero-container">
-        
-        <!-- LEFT: ROUND PROFILE IMAGE -->
-        <div class="hero-left">
-          <!-- Clicking this label toggles the checkbox, triggering the zoom modal -->
-          <label for="photo-zoom" class="avatar-wrapper" title="Click to view full picture">
-            <!-- 💡 STUDENT TIP: Replace 'avatar-placeholder.svg' with your own image file (e.g. 'me.jpg') -->
-            <img src="avatar-placeholder.svg" alt="Profile Picture" class="avatar-img" />
-            <span class="avatar-badge">🔍 Click to zoom</span>
-          </label>
-        </div>
-
-        <!-- RIGHT: DESCRIPTION -->
-        <div class="hero-right">
-          <div class="status-pill">
-            <span class="status-dot"></span> B.Tech CS &amp; AI &bull; ADYPU
-          </div>
-          <h1 class="hero-title">
-            Hi, I'm <span class="highlight">Aryan Nawkar</span>
-          </h1>
-          <h2 class="hero-subtitle">
-            B.Tech in CS &amp; AI &bull; Data Science &amp; DSA Enthusiast
-          </h2>
-          <p class="hero-description">
-            Welcome to my portfolio! I am a first-year student pursuing B.Tech in Computer Science &amp; Artificial Intelligence at ADYPU (Class of 2030). 
-            I have completed my Data Structures &amp; Algorithms (DSA) fundamentals, recently started actively solving problems on LeetCode, 
-            and am currently diving into Data Science with Python. When away from the keyboard, I love staying active and competing in sports.
-          </p>
-
-          <!-- Quick Highlights -->
-          <div class="hero-highlights">
-            <div class="highlight-item">
-              <span class="highlight-num">ADYPU</span>
-              <span class="highlight-label">Class of 2030</span>
-            </div>
-            <div class="highlight-item">
-              <span class="highlight-num">20+</span>
-              <span class="highlight-label">LeetCode Solved</span>
-            </div>
-            <div class="highlight-item">
-              <span class="highlight-num">Python</span>
-              <span class="highlight-label">&amp; Data Science</span>
-            </div>
-          </div>
-
-          <div class="hero-actions">
-            <a href="#achievements" class="btn-primary">View Achievements</a>
-            <a href="#about" class="btn-secondary">More About Me</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================= -->
-    <!-- ABOUT SECTION                                             -->
-    <!-- ========================================================= -->
-    <section id="about" class="section about-section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Background</span>
-          <h2 class="section-title">About Me</h2>
-          <p class="section-subtitle">A glimpse into my academic journey, interests, and current focus.</p>
-        </div>
-
-        <div class="about-grid">
-          <div class="about-card">
-            <div class="card-icon">🎓</div>
-            <h3>Education</h3>
-            <p class="card-headline">B.Tech in Computer Science &amp; AI</p>
-            <p class="card-subtext">Ajeenkya DY Patil University (ADYPU) &bull; Class of 2030</p>
-            <p class="card-desc">
-              Building a rigorous foundation in Artificial Intelligence, algorithms, object-oriented concepts, 
-              mathematics for computing, and emerging technology domains.
-            </p>
-          </div>
-
-          <div class="about-card">
-            <div class="card-icon">💻</div>
-            <h3>Current Tech Stack</h3>
-            <p class="card-headline">Languages &amp; Tooling</p>
-            <div class="tags-container">
-              <span class="tag">Python</span>
-              <span class="tag">Data Science</span>
-              <span class="tag">NumPy</span>
-              <span class="tag">Pandas</span>
-              <span class="tag">DSA</span>
-              <span class="tag">C / C++</span>
-              <span class="tag">HTML5</span>
-              <span class="tag">CSS3</span>
-              <span class="tag">LeetCode</span>
-              <span class="tag">Git &amp; GitHub</span>
-            </div>
-            <p class="card-desc">
-              Focusing on Data Science workflows in Python, mastering Data Structures &amp; Algorithms, and writing clean, scalable code.
-            </p>
-          </div>
-
-          <div class="about-card">
-            <div class="card-icon">🎯</div>
-            <h3>Goals &amp; Vision</h3>
-            <p class="card-headline">First Year Roadmap</p>
-            <p class="card-desc">
-              Actively scaling my LeetCode problem solving, building end-to-end Data Science and Machine Learning projects, 
-              and maintaining a healthy balance with athletic competitions.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================= -->
-    <!-- ACHIEVEMENTS SECTION (WITH SUBSECTIONS)                  -->
-    <!-- 1. Competitive Programming                                -->
-    <!-- 2. Sports & Athletics                                     -->
-    <!-- ========================================================= -->
-    <section id="achievements" class="section achievements-section">
-      <div class="container">
-        
-        <div class="section-header">
-          <span class="section-tag">Milestones</span>
-          <h2 class="section-title">My Achievements</h2>
-          <p class="section-subtitle">Highlights from competitive coding and athletic competitions.</p>
-        </div>
-
-        <!-- SUBSECTION 1: COMPETITIVE PROGRAMMING -->
-        <div class="achieve-subsection">
-          <div class="subsection-header">
-            <div class="sub-icon">⚡</div>
-            <div>
-              <h3 class="subsection-title">Competitive Programming &amp; Tech</h3>
-              <p class="subsection-desc">Problem-solving contests, platform ratings, and coding challenges</p>
-            </div>
-          </div>
-
-          <div class="achieve-grid">
-            <div class="achieve-card">
-              <div class="achieve-badge">Active Milestone</div>
-              <h4>20+ LeetCode Problems Solved</h4>
-              <p>
-                Recently launched my LeetCode journey with a focus on problem-solving consistency. Solving daily challenges across arrays, strings, two-pointers, and logical patterns.
-              </p>
-              <div class="achieve-meta">
-                <span>⚡ Platform: LeetCode</span>
-                <span>📅 Ongoing Streak</span>
-              </div>
-            </div>
-
-            <div class="achieve-card">
-              <div class="achieve-badge">Core Foundation</div>
-              <h4>Data Structures &amp; Algorithms (DSA)</h4>
-              <p>
-                Completed core DSA fundamentals including linear and non-linear data structures, searching &amp; sorting algorithms, recursion, and space-time complexity analysis.
-              </p>
-              <div class="achieve-meta">
-                <span>🧠 Concepts Mastered</span>
-                <span>🚀 Strong Logic</span>
-              </div>
-            </div>
-
-            <div class="achieve-card">
-              <div class="achieve-badge">Specialization</div>
-              <h4>Data Science with Python</h4>
-              <p>
-                Currently diving deep into practical Data Science using Python, exploring numerical computing, data wrangling with Pandas/NumPy, and foundational analytics.
-              </p>
-              <div class="achieve-meta">
-                <span>📊 Python &amp; AI</span>
-                <span>🔥 Active Learning</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SUBSECTION 2: SPORTS & ATHLETICS -->
-        <div class="achieve-subsection sports-subsection">
-          <div class="subsection-header">
-            <div class="sub-icon sports-icon">🏅</div>
-            <div>
-              <h3 class="subsection-title">Sports &amp; Athletics</h3>
-              <p class="subsection-desc">Building discipline, resilience, and teamwork through athletics</p>
-            </div>
-          </div>
-
-          <div class="achieve-grid">
-            <div class="achieve-card sports-card">
-              <div class="achieve-badge sport-badge">Inter-College Tournament</div>
-              <h4>Badminton / Football Championship</h4>
-              <p>
-                Represented the first-year collegiate team as a starter. Reached the semi-finals in the 
-                inter-department tournament.
-              </p>
-              <div class="achieve-meta">
-                <span>🥉 Semi-Finalist</span>
-                <span>📅 Autumn 2026</span>
-              </div>
-            </div>
-
-            <div class="achieve-card sports-card">
-              <div class="achieve-badge sport-badge">High School / Zonal</div>
-              <h4>Zonal Athletics Gold / Silver Medalist</h4>
-              <p>
-                Won medals in the 400m sprint and relay races during inter-school athletic championships.
-              </p>
-              <div class="achieve-meta">
-                <span>🥇 Gold Medalist</span>
-                <span>📅 High School</span>
-              </div>
-            </div>
-
-            <div class="achieve-card sports-card">
-              <div class="achieve-badge sport-badge">Leadership</div>
-              <h4>Sports Captain / Team Lead</h4>
-              <p>
-                Led training sessions, coordinated team lineups, and motivated players under high-pressure 
-                match scenarios.
-              </p>
-              <div class="achieve-meta">
-                <span>🤝 Team Leadership</span>
-                <span>📅 2 Years</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ========================================================= -->
-    <!-- CONTACT SECTION                                           -->
-    <!-- ========================================================= -->
-    <section id="contact" class="section contact-section">
-      <div class="container">
-        <div class="contact-box">
-          <span class="section-tag">Get In Touch</span>
-          <h2 class="section-title">Let's Connect &amp; Collaborate</h2>
-          <p class="contact-text">
-            I'm always eager to collaborate on hackathons, discuss competitive programming, or play sports.
-          </p>
-
-          <div class="contact-links">
-            <a href="mailto:your.email@example.com" class="contact-item">
-              <span class="contact-icon">✉️</span>
-              <span class="contact-info">your.email@example.com</span>
-            </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="contact-item">
-              <span class="contact-icon">🐙</span>
-              <span class="contact-info">GitHub Profile</span>
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="contact-item">
-              <span class="contact-icon">💼</span>
-              <span class="contact-info">LinkedIn Profile</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ========================================================= -->
-  <!-- FOOTER                                                    -->
-  <!-- ========================================================= -->
-  <footer class="site-footer">
-    <div class="container footer-content">
-      <p>&copy; 2026 Aryan Nawkar. Built with pure HTML &amp; CSS.</p>
-      <a href="#home" class="back-to-top">Back to top &uarr;</a>
+  <section id="about">
+    <div class="section-head"><div class="num">01</div><div><h2>About me</h2><p class="sub">A little about the person behind the portfolio.</p></div></div>
+    <div class="card">
+      <h3>Hey, I’m Aryan.</h3>
+      <p>I’m a Computer Science &amp; Artificial Intelligence undergraduate interested in understanding how intelligent systems work and how to build them. I’m currently strengthening my foundations in programming and machine learning.</p>
+      <p class="note">This introduction is an initial draft. We can refine it when you share more about yourself.</p>
     </div>
-  </footer>
+  </section>
 
-  <!-- ========================================================= -->
-  <!-- FULL PICTURE MODAL (ANIMATES WHEN AVATAR IS CLICKED)      -->
-  <!-- PURE HTML & CSS (Controlled by #photo-zoom checkbox)      -->
-  <!-- ========================================================= -->
-  <div class="photo-modal-overlay">
-    <!-- Clicking this backdrop closes the modal by unchecking the checkbox -->
-    <label for="photo-zoom" class="modal-backdrop"></label>
-
-    <div class="modal-dialog">
-      <!-- Close 'X' Button -->
-      <label for="photo-zoom" class="modal-close-btn" title="Close full view">&times;</label>
-      
-      <!-- Full-Size Image Container -->
-      <div class="modal-image-wrapper">
-        <img src="avatar-placeholder.svg" alt="Aryan Nawkar Profile Picture Full View" class="modal-full-img" />
-      </div>
-
-      <div class="modal-caption">
-        <h3>Aryan Nawkar</h3>
-        <p>B.Tech CS &amp; AI &bull; ADYPU (Class of 2030)</p>
-      </div>
+  <section id="education">
+    <div class="section-head"><div class="num">02</div><div><h2>Education</h2><p class="sub">My academic background.</p></div></div>
+    <div class="card">
+      <div class="card-title"><h3>Bachelor of Technology</h3><span class="tag">Current</span></div>
+      <p style="font-size:1.05rem;font-weight:750;color:var(--green-soft)">Computer Science &amp; Artificial Intelligence</p>
+      <p class="note">College / university name and expected graduation year will be added later.</p>
     </div>
-  </div>
+  </section>
 
+  <section id="coming-soon">
+    <div class="section-head"><div class="num">03</div><div><h2>More coming soon</h2><p class="sub">This portfolio will grow as you share more details.</p></div></div>
+    <div class="grid-two">
+      <div class="card"><span class="tag">Coming soon</span><h3 style="margin-top:12px">Skills</h3><p class="note">Programming languages, tools, libraries, and technologies.</p></div>
+      <div class="card"><span class="tag">Coming soon</span><h3 style="margin-top:12px">Projects</h3><p class="note">Personal projects, coursework, experiments, and things I build.</p></div>
+      <div class="card"><span class="tag">Coming soon</span><h3 style="margin-top:12px">Learning journey</h3><p class="note">What I’m currently learning and exploring in AI and computer science.</p></div>
+      <div class="card"><span class="tag">Coming soon</span><h3 style="margin-top:12px">Contact</h3><p class="note">Professional links and a way to get in touch.</p></div>
+    </div>
+  </section>
+
+  <div class="actions"><button type="button" class="primary" onclick="window.print()">Print portfolio</button></div>
+  <footer><span>ARYAN NAWKAR · PERSONAL PORTFOLIO</span><span>B.TECH · COMPUTER SCIENCE &amp; AI</span></footer>
+</div>
+<script>/* Portfolio content can be updated as details are added. */</script>
 </body>
 </html>
